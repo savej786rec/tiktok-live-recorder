@@ -17,14 +17,16 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update && sudo apt-get install -y ffmpeg
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Run Live Recorder
         run: |
-          python src/main.py -user Sarujaanu786 -mode automatic
+          python -u src/main.py -user Sarujaanu786 -mode automatic
 
-      - name: Upload Video to GitHub
+      - name: Upload Video
         if: always()
         uses: actions/upload-artifact@v4
         with:
